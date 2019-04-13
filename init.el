@@ -55,7 +55,8 @@ This function should only modify configuration layer settings."
      ;; spell-checking
      syntax-checking
      ;; version-control
-     chinese
+     (chinese :package youdao-dictionary
+              :variable chinese-enable-youdao-dict t)
      )
 
    ;; List of additional packages that will be installed without being
@@ -463,6 +464,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (spacemacs//set-monospaced-font "Source Code Variable" "微软雅黑" 16 18)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -479,7 +481,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yapfify stickyfunc-enhance smartparens pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements live-py-mode importmagic epc ctable concurrent deferred helm-pydoc helm-gtags helm-cscope xcscope ggtags evil-matchit cython-mode counsel-gtags counsel swiper ivy company-anaconda anaconda-mode pythonic yasnippet-snippets toc-org org-present org-pomodoro alert log4e gntp org-mime org-download org-bullets org-brain htmlize helm-org-rifle helm-company helm-c-yasnippet gnuplot fuzzy flycheck-pos-tip pos-tip flycheck evil-org company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete org-plus-contrib which-key use-package treemacs-projectile treemacs-evil pcre2el overseer nameless macrostep helm-xref helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag evil-mc elisp-slime-nav dotenv-mode diminish bind-map auto-compile ace-jump-helm-line))))
+    (pyim pyim-basedict pangu-spacing find-by-pinyin-dired chinese-conv ace-pinyin pinyinlib yapfify stickyfunc-enhance smartparens pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements live-py-mode importmagic epc ctable concurrent deferred helm-pydoc helm-gtags helm-cscope xcscope ggtags evil-matchit cython-mode counsel-gtags counsel swiper ivy company-anaconda anaconda-mode pythonic yasnippet-snippets toc-org org-present org-pomodoro alert log4e gntp org-mime org-download org-bullets org-brain htmlize helm-org-rifle helm-company helm-c-yasnippet gnuplot fuzzy flycheck-pos-tip pos-tip flycheck evil-org company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete org-plus-contrib which-key use-package treemacs-projectile treemacs-evil pcre2el overseer nameless macrostep helm-xref helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag evil-mc elisp-slime-nav dotenv-mode diminish bind-map auto-compile ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
