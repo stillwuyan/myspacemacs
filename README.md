@@ -23,7 +23,7 @@ git clone https://github.com/stillwuyan/myspacemacs.git ~/.spacemacs.d
 ```
 
 ## Windows下重定向emacs home路径
-1. 创建`C:\Users\Username\AppData\Roaming\emacs.d\init.el`文件
+1. 创建`C:\Users\Username\AppData\Roaming\.emacs.d\init.el`文件
 2. 在文件中添加如下内容：
    ```
    ;; Place this file in C:\Users\Username\AppData\Roaming\.emacs.d\init.el and point to the appropriate files
