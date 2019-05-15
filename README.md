@@ -21,3 +21,15 @@ git clone https://github.com/stillwuyan/myspacemacs.git ~/.spacemacs.d
 ```
 (global-set-key "\C-h" 'backward-delete-char-untabify)
 ```
+
+## Windows下重定向emacs home路径
+1. 创建`C:\Users\Username\AppData\Roaming\emacs.d\init.el`文件
+2. 在文件中添加如下内容：
+   ```
+   ;; Place this file in C:\Users\Username\AppData\Roaming\emacs.d\init.el and point to the appropriate files
+   (setq user-init-file "<user defined home path>/emacs.d/init.el")
+   (setq user-emacs-directory "<user defined home path>/emacs.d/")
+   (setq default-directory "<user defined workspace path>")
+   (setenv "HOME" "<user defined path>")
+   (load user-init-file)
+   ```
