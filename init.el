@@ -54,10 +54,9 @@ This function should only modify configuration layer settings."
      ;; spell-checking
      syntax-checking
      ;; version-control
-     (chinese :package youdao-dictionary
-              :variable chinese-enable-youdao-dict t)
+     ;; (chinese :package youdao-dictionary
+     ;;          :variable chinese-enable-youdao-dict t))
      )
-
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -461,9 +460,9 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq tramp-ssh-controlmaster-options "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   (setq configuration-layer-elpa-archives
-        '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-          ("org-cn"   . "http://elpa.emacs-china.org/org/")
-          ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
+        '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+          ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
   )
 
 (defun dotspacemacs/user-load ()
@@ -475,13 +474,28 @@ dump."
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
-This function is called at the very end of Spacemacs startup, after layer
+This function is called at the very end of spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq powerline-default-separator 'arrow)
   (when (and (spacemacs/system-is-mswindows) window-system)
-    (spacemacs//set-monospaced-font "Source Code Variable" "微软雅黑" 16 18)
+    (spacemacs//set-monospaced-font "source code variable" "微软雅黑" 16 18)
+    )
+  ;; org
+  (with-eval-after-load 'org
+    (setq org-todo-keywords '((sequence "TODO" "HAND" "|" "DONE")))
+    (setq org-todo-keyword-faces
+          '(("TODO" . (:foreground "red" :weight bold))
+            ("HAND" . (:foreground "blue" :weight bold))
+            ("DONE" . (:foreground "forest green" :weight bold))
+            ))
+    (setq org-startup-indented t)
+    (defvar org-agenda-dir "" "gtd org files location")
+    (setq-default org-agenda-dir "c:/data/users/xu_q2/workspace/gtd")
+    (setq org-agenda-files (list (expand-file-name "task.org" org-agenda-dir)))
+    (setq org-default-notes-file (expand-file-name "task.org" org-agenda-dir))
+    ;;(setq org-refile-targets '((expand-file-name "task.org" org-agenda-dir)) :maxlevel . 3)
     )
   )
 
@@ -514,7 +528,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yapfify ws-butler winum which-key wgrep web-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org tagedit spaceline powerline smex smeargle slim-mode scss-mode sass-mode restart-emacs request rainbow-delimiters pyvenv pytest pyim pyim-basedict pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox spinner pangu-spacing orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree mwim move-text mmm-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint ivy-hydra indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make haml-mode google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip flx-ido find-by-pinyin-dired fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump diminish define-word cython-mode counsel-projectile company-web company-statistics company-anaconda column-enforce-mode clean-aindent-mode bind-key auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-pinyin ace-link ac-ispell))))
+    (s hydra lv popup pos-tip flycheck flx magit transient git-commit with-editor dash evil goto-chg undo-tree projectile pkg-info epl counsel swiper ivy company bind-map yasnippet packed async pinyinlib avy yapfify ws-butler winum which-key wgrep web-mode volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org tagedit spaceline powerline smex smeargle slim-mode scss-mode sass-mode restart-emacs request rainbow-delimiters pyvenv pytest pyim pyim-basedict pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode pcre2el paradox spinner pangu-spacing orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-plus-contrib org-mime org-download org-bullets open-junk-file neotree mwim move-text mmm-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint ivy-hydra indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make haml-mode google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip flx-ido find-by-pinyin-dired fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav dumb-jump diminish define-word cython-mode counsel-projectile company-web company-statistics company-anaconda column-enforce-mode clean-aindent-mode bind-key auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-pinyin ace-link ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
