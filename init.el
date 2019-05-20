@@ -55,7 +55,7 @@ This function should only modify configuration layer settings."
      syntax-checking
      ;; version-control
      ;; (chinese :package youdao-dictionary
-     ;;          :variable chinese-enable-youdao-dict t))
+     ;;          :variable chinese-enable-youdao-dict t)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -64,7 +64,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(hungry-delete)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -478,10 +478,13 @@ This function is called at the very end of spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  (global-hungry-delete-mode)
+  (show-paren-mode)
   (setq powerline-default-separator 'arrow)
-  (when (and (spacemacs/system-is-mswindows) window-system)
-    (spacemacs//set-monospaced-font "source code variable" "微软雅黑" 16 18)
-    )
+  ;; (when (and (spacemacs/system-is-mswindows) window-system)
+  ;;   (spacemacs//set-monospaced-font "source code variable" "微软雅黑" 16 18)
+  ;;   )
+
   ;; org
   (with-eval-after-load 'org
     (setq org-todo-keywords '((sequence "TODO" "HAND" "|" "DONE")))
@@ -495,7 +498,7 @@ before packages are loaded."
     (setq-default org-agenda-dir "c:/data/users/xu_q2/workspace/gtd")
     (setq org-agenda-files (list (expand-file-name "task.org" org-agenda-dir)))
     (setq org-default-notes-file (expand-file-name "task.org" org-agenda-dir))
-    ;;(setq org-refile-targets '((expand-file-name "task.org" org-agenda-dir)) :maxlevel . 3)
+    (setq org-refile-targets `((,(expand-file-name "task.org" org-agenda-dir) :maxlevel . 3)))
     )
   )
 
