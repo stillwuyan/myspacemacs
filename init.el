@@ -514,6 +514,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-clockreport-parameter-plist (quote (:link t :maxlevel 3)))
  '(package-selected-packages
    (quote
     (pyim pyim-basedict pangu-spacing find-by-pinyin-dired chinese-conv ace-pinyin pinyinlib yapfify stickyfunc-enhance smartparens pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements live-py-mode importmagic epc ctable concurrent deferred helm-pydoc helm-gtags helm-cscope xcscope ggtags evil-matchit cython-mode counsel-gtags counsel swiper ivy company-anaconda anaconda-mode pythonic yasnippet-snippets toc-org org-present org-pomodoro alert log4e gntp org-mime org-download org-bullets org-brain htmlize helm-org-rifle helm-company helm-c-yasnippet gnuplot fuzzy flycheck-pos-tip pos-tip flycheck evil-org company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete org-plus-contrib which-key use-package treemacs-projectile treemacs-evil pcre2el overseer nameless macrostep helm-xref helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag evil-mc elisp-slime-nav dotenv-mode diminish bind-map auto-compile ace-jump-helm-line))))
